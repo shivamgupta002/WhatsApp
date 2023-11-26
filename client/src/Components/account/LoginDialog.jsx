@@ -52,7 +52,10 @@ const LoginDialog = () => {
   };
   return (
     <>
-      <Dialog open={true} PaperProps={{ sx: dialogStyle }}>
+      <Dialog open={true} 
+      PaperProps={{ sx: dialogStyle }}
+      hideBackdrop={true}
+      >
         <Component>
           <Container>
             <Title>To use WhatsApp on your computer</Title>
