@@ -35,7 +35,6 @@ const ChatDialog = () => {
         hideBackdrop={true}
         maxWidth={"md"}
       >
-        hello from chat
         <Component>
           <LeftComponent>
             <Menu />

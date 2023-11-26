@@ -1,9 +1,14 @@
 import React from "react";
+import { Box } from "@mui/material";
+import Header from './Header';
+
 
 const Menu = () => {
   return (
     <>
-      <h1>Hello from Menu</h1>
+      <Box>
+        <Header/>
+      </Box>
     </>
   );
 };
