@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { GoogleLogin } from "@react-oauth/google";
 import { Dialog, Box, Typography, List, ListItem, styled } from "@mui/material";
 import { qrCodeImage } from "../../constant/data";
 import { jwtDecode } from "jwt-decode";
+import { AccountContext } from "../../context/AccountProvider";
 
 const dialogStyle = {
   marginTop: "12%",
@@ -42,20 +43,24 @@ const StyledList = styled(List)`
   }
 `;
 const LoginDialog = () => {
+  const { setAccount } = useContext(AccountContext);
+
+  // --------------------- On Successfully Login -------------------------------------
   const onLoginSuccess = (res) => {
     // console.log(res);
     const decoded = jwtDecode(res.credential);
     console.log(decoded);
+    setAccount(decoded);
   };
+
+  // --------------------- On Login Error -------------------------------------
+  
   const onLoginError = (res) => {
     console.log("Login Failed", res);
   };
   return (
     <>
-      <Dialog open={true} 
-      PaperProps={{ sx: dialogStyle }}
-      hideBackdrop={true}
-      >
+      <Dialog open={true} PaperProps={{ sx: dialogStyle }} hideBackdrop={true}>
         <Component>
           <Container>
             <Title>To use WhatsApp on your computer</Title>
