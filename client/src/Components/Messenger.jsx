@@ -5,8 +5,13 @@ import { AccountContext } from "../context/AccountProvider";
 import ChatDialog from "./chat/ChatDialog";
 
 const Header = styled(AppBar)`
-  height: 220px;
+  height: 125px;
   background-color: #00bfa5;
+  box-shadow: none;
+`;
+const LoginHeader = styled(AppBar)`
+  height: 220px;
+  background-color: #00a884;
   box-shadow: none;
 `;
 const Component = styled(Box)`
@@ -20,12 +25,17 @@ const Messenger = () => {
     <>
       <Component>
         {account ? (
-          <ChatDialog />
-        ) : (
           <>
             <Header>
               <Toolbar></Toolbar>
             </Header>
+            <ChatDialog />
+          </>
+        ) : (
+          <>
+            <LoginHeader>
+              <Toolbar></Toolbar>
+            </LoginHeader>
             <LoginDialog />
           </>
         )}

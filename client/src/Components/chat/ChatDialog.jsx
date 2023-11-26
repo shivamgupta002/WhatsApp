@@ -1,11 +1,12 @@
-import React from 'react'
+import { Typography } from "@mui/material";
+import React from "react";
 
 const ChatDialog = () => {
   return (
     <>
-     <h2>hello from chat</h2> 
+      <Typography>hello from chat</Typography>
     </>
-  )
-}
+  );
+};
 
-export default ChatDialog
+export default ChatDialog;
