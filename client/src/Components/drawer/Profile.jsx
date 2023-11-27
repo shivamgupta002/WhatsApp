@@ -8,7 +8,7 @@ const ImageContainer = styled(Box)`
 `;
 
 const Image = styled("img")({
-  width: 170,
+  width: 150,
   height: 200,
   borderRadius: "50%",
   padding: "25px 0px",

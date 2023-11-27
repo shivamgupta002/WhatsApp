@@ -4,15 +4,18 @@ import { ArrowBack } from "@mui/icons-material";
 import Profile from "./Profile";
 
 const drawerStyle = {
-  left: 20,
-  top: 20,
-  width: "24.5%",
-  height: "95%",
+  // left: 20,
+  // top: 20,
+  // width: "24.5%",
+  // height: "95%",
+  width: "28%",
+  height: "100%",
   boxShadow: "none",
 };
 const Header = styled(Box)`
   background: #008069;
-  height: 107px;
+  // height: 107px;
+  height: 70px;
   color: #fff;
   display: flex;
 
