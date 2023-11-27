@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Box, styled } from "@mui/material";
-import { Chat as MessageIcon, MoreVert } from "@mui/icons-material";
+import { Chat , MoreVert as More } from "@mui/icons-material";
 import { AccountContext } from "../../../context/AccountProvider";
 
 const Component = styled(Box)`
@@ -10,6 +10,12 @@ const Component = styled(Box)`
   display: flex;
   align-item: center;
 `;
+const MessageIcon = styled(Chat)`
+font-size:40px;
+`
+const MoreVert = styled(More)`
+font-size:40px;
+`
 const Wrapper = styled(Box)`
   margin-left: auto;
   & > * {
