@@ -1,7 +1,10 @@
 import React, { useContext } from "react";
 import { Box, styled } from "@mui/material";
-import { Chat , MoreVert as More } from "@mui/icons-material";
+import { Chat } from "@mui/icons-material";
 import { AccountContext } from "../../../context/AccountProvider";
+
+//components
+import HeaderMenu from "./HeaderMenu";
 
 const Component = styled(Box)`
   height: 54px;
@@ -11,21 +14,21 @@ const Component = styled(Box)`
   align-item: center;
 `;
 const MessageIcon = styled(Chat)`
-font-size:40px;
-`
-const MoreVert = styled(More)`
-font-size:40px;
-`
+  font-size: 40px;
+`;
+
 const Wrapper = styled(Box)`
+  display: flex;
+  align-items:center;
   margin-left: auto;
   & > * {
-    font-size: 40px;
-    margin-left: 2px;
+    font-size: 35px;
+    margin-left: 10px;
     padding: 8px;
     color: #000;
   }
   & :first-child {
-    margin-right: 8px;
+    margin-right: 5px;
   }
 `;
 const Image = styled("img")({
@@ -43,7 +46,7 @@ const Header = () => {
         <Image src={account.picture} alt="dp" />
         <Wrapper>
           <MessageIcon />
-          <MoreVert />
+          <HeaderMenu />
         </Wrapper>
       </Component>
     </>
