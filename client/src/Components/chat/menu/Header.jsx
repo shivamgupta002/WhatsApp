@@ -13,10 +13,10 @@ const Component = styled(Box)`
 const Wrapper = styled(Box)`
   margin-left: auto;
   & > * {
+    font-size: 40px;
     margin-left: 2px;
     padding: 8px;
     color: #000;
-    font-size: 40px;
   }
   & :first-child {
     margin-right: 8px;
