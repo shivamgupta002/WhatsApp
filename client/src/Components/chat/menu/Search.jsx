@@ -18,10 +18,10 @@ const Wrapper = styled(Box)`
   border-radius: 10px;
 `;
 const Icon = styled(Box)`
-position:absolute;
-height:100%;
-padding:6px 10px;
-color:#919191;
+  position: absolute;
+  height: 100%;
+  padding: 6px 10px;
+  color: #919191;
 `;
 const InputField = styled(InputBase)`
   width: 100%;
@@ -31,7 +31,7 @@ const InputField = styled(InputBase)`
   font-size: 14px;
 `;
 
-const Search = () => {
+const Search = ({ setText }) => {
   return (
     <>
       <Component>
@@ -39,7 +39,10 @@ const Search = () => {
           <Icon>
             <SearchIcon fontSize="small" />
           </Icon>
-          <InputField placeholder="Search or start new Chat" />
+          <InputField
+            placeholder="Search or start new Chat"
+            onChange={(e) => setText(e.target.value)}
+          />
         </Wrapper>
       </Component>
     </>
