@@ -4,6 +4,7 @@ import { Dialog, Box, Typography, List, ListItem, styled } from "@mui/material";
 import { qrCodeImage } from "../../constant/data";
 import { jwtDecode } from "jwt-decode";
 import { AccountContext } from "../../context/AccountProvider";
+import { addUser } from "../../service/Api";
 
 const dialogStyle = {
   marginTop: "12%",
@@ -46,15 +47,16 @@ const LoginDialog = () => {
   const { setAccount } = useContext(AccountContext);
 
   // --------------------- On Successfully Login -------------------------------------
-  const onLoginSuccess = (res) => {
+  const onLoginSuccess = async (res) => {
     // console.log(res);
     const decoded = jwtDecode(res.credential);
     console.log(decoded);
     setAccount(decoded);
+    await addUser(decoded);
   };
 
   // --------------------- On Login Error -------------------------------------
-  
+
   const onLoginError = (res) => {
     console.log("Login Failed", res);
   };
