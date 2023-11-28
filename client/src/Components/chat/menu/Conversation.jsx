@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Box, Typography, styled } from "@mui/material";
+import { AccountContext } from "../../../context/AccountProvider";
+
 const Component = styled(Box)`
   display: flex;
   height: 50px;
@@ -18,9 +20,13 @@ const Image = styled("img")({
 });
 
 const Conversation = ({ user }) => {
+  const { setPerson } = useContext(AccountContext);
+  const getUser = () => {
+    setPerson(user);
+  };
   return (
     <>
-      <Component>
+      <Component onClick={() => getUser()}>
         <ImageBox>
           <Image src={user.picture} alt="dp" />
         </ImageBox>

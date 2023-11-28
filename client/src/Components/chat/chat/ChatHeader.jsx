@@ -1,6 +1,5 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Box, Typography, styled } from "@mui/material";
-import { AccountContext } from "../../../context/AccountProvider";
 import { MoreVert, Search } from "@mui/icons-material";
 
 const Header = styled(Box)`
@@ -34,16 +33,14 @@ const RightComponent = styled(Box)`
   }
 `;
 
-const ChatHeader = () => {
-  const { account } = useContext(AccountContext);
-
+const ChatHeader = ({ person }) => {
   return (
     <>
       <Header>
-        <Image src={account.picture} alt="dp" />
+        <Image src={person.picture} alt="dp" />
         <Box>
-          <Name>Name</Name>
-          <Status>Online Status</Status>
+          <Name>{person.name}</Name>
+          <Status>Offline</Status>
         </Box>
         <RightComponent>
           <Search />
