@@ -9,3 +9,11 @@ export const addUser = async (data) => {
     console.log("Error while addUser is ", e.message);
   }
 };
+export const getUsers = async () => {
+  try {
+    let response = await axios.get(`${url}/users`);
+    return response.data;
+  } catch (e) {
+    console.log(e.message);
+  }
+};

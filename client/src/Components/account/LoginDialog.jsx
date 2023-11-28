@@ -50,7 +50,7 @@ const LoginDialog = () => {
   const onLoginSuccess = async (res) => {
     // console.log(res);
     const decoded = jwtDecode(res.credential);
-    console.log(decoded);
+    // console.log(decoded);
     setAccount(decoded);
     await addUser(decoded);
   };
