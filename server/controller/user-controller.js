@@ -15,3 +15,12 @@ export const addUser = async (req, res) => {
     return res.status(500).json(e);
   }
 };
+export const getUser = async (req, res) => {
+  try {
+    let users = await User.find({});
+    return res.status(200).json(users);
+  } catch (e) {
+    console.log("Error while fetching user data ", e.message);
+    return res.status(500).json(e.message);
+  }
+};
