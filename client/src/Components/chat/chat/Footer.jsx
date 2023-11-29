@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Box, styled, InputBase } from "@mui/material";
 import { EmojiEmotionsOutlined, AttachFile, Mic } from "@mui/icons-material";
 const Container = styled(Box)`
@@ -29,7 +29,7 @@ const ClipIcon = styled(AttachFile)`
   transform: rotate(40deg);
 `;
 
-const Footer = ({ sendText, setValue ,value}) => {
+const Footer = ({ sendText, setValue, value }) => {
   return (
     <>
       <Container>
