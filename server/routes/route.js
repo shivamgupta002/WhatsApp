@@ -5,8 +5,6 @@ import {
   newConversation,
   getConversation,
 } from "../controller/conversation-controller.js";
-import { newMessage } from "../../client/src/service/Api.js";
-
 const route = express.Router();
 
 route.post("/add", addUser);
