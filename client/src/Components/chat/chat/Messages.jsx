@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import Footer from "./Footer";
+import Message from "./Message";
 import { Box, styled } from "@mui/material";
 import { AccountContext } from "../../../context/AccountProvider";
 import { getMessage, newMessage } from "../../../service/Api";
@@ -12,17 +13,24 @@ const Component = styled(Box)`
   height: 80vh;
   overflow-y: scroll;
 `;
+const Container = styled(Box)`
+  padding: 0.5% 1%;
+`;
+
 const Messages = ({ person, conversation }) => {
   const { account } = useContext(AccountContext);
   const [value, setValue] = useState("");
+  const [messages, setMessages] = useState([]);
+  const [newMessageFlag, setNewMessageFlag] = useState(false);
 
   useEffect(() => {
     const getMessageDetail = async () => {
       let data = await getMessage(conversation._id);
-      console.log(data);
+      // console.log(data);
+      setMessages(data);
     };
-    getMessageDetail();
-  }, [person._id, conversation._id]);
+    conversation._id && getMessageDetail();
+  }, [person._id, conversation._id, newMessageFlag]);
 
   const sendText = async (e) => {
     // console.log(e);
@@ -38,12 +46,22 @@ const Messages = ({ person, conversation }) => {
       // console.log(message);
       await newMessage(message);
       setValue("");
+      setNewMessageFlag(true);
     }
   };
   return (
     <>
       <Wrapper>
-        <Component></Component>
+        <Component>
+          {messages &&
+            messages.map((message) => {
+              return (
+                <Container>
+                  <Message message={message} />
+                </Container>
+              );
+            })}
+        </Component>
         <Footer sendText={sendText} setValue={setValue} value={value} />
       </Wrapper>
     </>
