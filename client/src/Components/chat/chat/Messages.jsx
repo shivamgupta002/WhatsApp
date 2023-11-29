@@ -1,8 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Footer from "./Footer";
 import { Box, styled } from "@mui/material";
 import { AccountContext } from "../../../context/AccountProvider";
-import { newMessage } from "../../../service/Api";
+import { getMessage, newMessage } from "../../../service/Api";
 
 const Wrapper = styled(Box)`
   background: url(${"https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png"});
@@ -15,6 +15,14 @@ const Component = styled(Box)`
 const Messages = ({ person, conversation }) => {
   const { account } = useContext(AccountContext);
   const [value, setValue] = useState("");
+
+  useEffect(() => {
+    const getMessageDetail = async () => {
+      let data = await getMessage(conversation._id);
+      console.log(data);
+    };
+    getMessageDetail();
+  }, [person._id, conversation._id]);
 
   const sendText = async (e) => {
     // console.log(e);
@@ -36,10 +44,7 @@ const Messages = ({ person, conversation }) => {
     <>
       <Wrapper>
         <Component></Component>
-        <Footer 
-        sendText={sendText} 
-        setValue={setValue} 
-        value={value} />
+        <Footer sendText={sendText} setValue={setValue} value={value} />
       </Wrapper>
     </>
   );

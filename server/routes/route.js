@@ -1,6 +1,6 @@
 import express from "express";
 import { addUser, getUser } from "../controller/user-controller.js";
-import { getMessage, newMessage } from "../controller/message-controller.js";
+import { getMessages, newMessage } from "../controller/message-controller.js";
 import {
   newConversation,
   getConversation,
@@ -14,6 +14,6 @@ route.post("/conversation/add", newConversation);
 route.post("/conversation/get", getConversation);
 
 route.post("/message/add", newMessage);
-route.get("/message/get/:id", getMessage);
+route.get("/message/get/:id", getMessages);
 
 export default route;
