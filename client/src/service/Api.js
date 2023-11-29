@@ -24,3 +24,19 @@ export const setConversation = async (data) => {
     console.log("Error while setConversation is ", e.message);
   }
 };
+export const getConversation = async (data) => {
+  try {
+    let response = await axios.post(`${url}/conversation/get`, data);
+    return response.data;
+  } catch (e) {
+    console.log("Error while gettingConversation is ", e.message);
+  }
+};
+export const newMessage = async (data) => {
+  try {
+    let response = await axios.post(`${url}/message/add`, data);
+    return response.data;
+  } catch (e) {
+    console.log("Error while New message api is ", e.message);
+  }
+};
