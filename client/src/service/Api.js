@@ -42,10 +42,17 @@ export const newMessage = async (data) => {
 };
 export const getMessage = async (id) => {
   try {
-    console.log("hello");
     let response = await axios.get(`${url}/message/get/${id}`);
     return response.data;
   } catch (e) {
     console.log("Error while getting message api is ", e.message);
+  }
+};
+
+export const uploadFile = async (data) => {
+  try {
+    return await axios.get(`${url}/file/upload`, data);
+  } catch (e) {
+    console.log("Error while uploading file api is ", e.message);
   }
 };

@@ -66,7 +66,7 @@ const Messages = ({ person, conversation }) => {
         <Footer
           sendText={sendText}
           setValue={setValue}
-          value={value}
+          value={value} 
           setFile={setFile}
           file={file}
         />
