@@ -7,7 +7,7 @@ const Own = styled(Box)`
   background: #dcf8c6;
   max-width: 66%;
   margin-left: auto;
-  padding: 5px;
+  padding: 4px 6px;
   width: fit-content;
   display: flex;
   border-radius: 10px;
@@ -16,7 +16,7 @@ const Own = styled(Box)`
 const Wrapper = styled(Box)`
   background: #ffffff;
   max-width: 60%;
-  padding: 5px;
+  padding: 4px 6px;
   width: fit-content;
   display: flex;
   border-radius: 10px;

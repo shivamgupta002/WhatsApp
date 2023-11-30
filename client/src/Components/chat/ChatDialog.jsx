@@ -22,10 +22,10 @@ const LeftComponent = styled(Box)`
   min-width: 25%;
 `;
 const RightComponent = styled(Box)`
-  width: 73%;
+  width: 75%;
   min-width: 30%;
   height: 100%;
-  border-left: 1px solid rgba(0, 0, 0.14);
+  border-left: 1px solid rgba(0, 0, 0, 0.30);
 `;
 
 const ChatDialog = () => {

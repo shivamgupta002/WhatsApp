@@ -2,7 +2,7 @@ import React from "react";
 import { Box, styled, InputBase } from "@mui/material";
 import { EmojiEmotionsOutlined, AttachFile, Mic } from "@mui/icons-material";
 const Container = styled(Box)`
-  height: 55px;
+  height: 9vh;
   background: #ededed;
   display: flex;
   width: 100%;

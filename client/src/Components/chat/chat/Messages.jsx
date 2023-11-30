@@ -10,7 +10,7 @@ const Wrapper = styled(Box)`
   background-size: 50%;
 `;
 const Component = styled(Box)`
-  height: 80vh;
+  height: 76vh;
   overflow-y: scroll;
 `;
 const Container = styled(Box)`
