@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
 import Footer from "./Footer";
 import Message from "./Message";
 import { Box, styled } from "@mui/material";
@@ -18,6 +18,7 @@ const Container = styled(Box)`
 `;
 
 const Messages = ({ person, conversation }) => {
+  const scrollRef = useRef();
   const { account } = useContext(AccountContext);
   const [value, setValue] = useState("");
   const [messages, setMessages] = useState([]);
@@ -31,6 +32,10 @@ const Messages = ({ person, conversation }) => {
     };
     conversation._id && getMessageDetail();
   }, [person._id, conversation._id, newMessageFlag]);
+
+  useEffect(() => {
+    scrollRef.current?.scrollIntoView({ transition: "smooth" });
+  }, [messages]);
 
   const sendText = async (e) => {
     // console.log(e);
@@ -57,7 +62,7 @@ const Messages = ({ person, conversation }) => {
             messages.map((message) => {
               return (
                 <Container>
-                  <Message message={message} />
+                  <Message message={message} ref={scrollRef} />
                 </Container>
               );
             })}
