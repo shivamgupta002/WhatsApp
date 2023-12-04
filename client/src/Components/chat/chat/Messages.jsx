@@ -19,10 +19,20 @@ const Container = styled(Box)`
 
 const Messages = ({ person, conversation }) => {
   const scrollRef = useRef();
-  const { account } = useContext(AccountContext);
+  const { account, socket } = useContext(AccountContext);
   const [value, setValue] = useState("");
   const [messages, setMessages] = useState([]);
   const [newMessageFlag, setNewMessageFlag] = useState(false);
+  const [incomingMessage, setIncomingMessage] = useState(null);
+
+  useEffect(() => {
+    socket.current.on("getMessage", (data) => {
+      setIncomingMessage({
+        ...data,
+        createdAt: Date.now(),
+      });
+    });
+  }, []);
 
   useEffect(() => {
     const getMessageDetail = async () => {
@@ -37,11 +47,18 @@ const Messages = ({ person, conversation }) => {
     scrollRef.current?.scrollIntoView({ transition: "smooth" });
   }, [messages]);
 
+  useEffect(() => {
+    incomingMessage &&
+      conversation?.members?.includes(incomingMessage.senderId) &&
+      setMessages((prev) => [...prev, incomingMessage]);
+  }, [incomingMessage, conversation]);
+
   const sendText = async (e) => {
     // console.log(e);
     const code = e.keyCode || e.which;
+    let message = {};
     if (code === 13) {
-      let message = {
+      message = {
         senderId: account.sub,
         receiverId: person.sub,
         conversationId: conversation._id,
@@ -49,6 +66,8 @@ const Messages = ({ person, conversation }) => {
         text: value,
       };
       // console.log(message);
+      socket.current.emit("sendMessage", message);
+
       await newMessage(message);
       setValue("");
       setNewMessageFlag(true);
