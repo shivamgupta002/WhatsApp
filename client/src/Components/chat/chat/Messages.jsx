@@ -19,10 +19,10 @@ const Container = styled(Box)`
 
 const Messages = ({ person, conversation }) => {
   const scrollRef = useRef();
-  const { account, socket } = useContext(AccountContext);
+  const { account, socket, newMessageFlag, setNewMessageFlag } =
+    useContext(AccountContext);
   const [value, setValue] = useState("");
   const [messages, setMessages] = useState([]);
-  const [newMessageFlag, setNewMessageFlag] = useState(false);
   const [incomingMessage, setIncomingMessage] = useState(null);
 
   useEffect(() => {
