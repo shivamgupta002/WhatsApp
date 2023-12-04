@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Box, Typography, styled } from "@mui/material";
 import { MoreVert, Search } from "@mui/icons-material";
+import { AccountContext } from "../../../context/AccountProvider";
 
 const Header = styled(Box)`
   height: 10vh;
@@ -32,15 +33,21 @@ const RightComponent = styled(Box)`
     font-size: 37px;
   }
 `;
-
 const ChatHeader = ({ person }) => {
+  const { activeUsers } = useContext(AccountContext);
+  console.log(activeUsers);
+  console.log(person);
   return (
     <>
       <Header>
         <Image src={person.picture} alt="dp" />
         <Box>
           <Name>{person.name}</Name>
-          <Status>Offline</Status>
+          <Status>
+            {activeUsers?.find((user) => user.sub === person.sub)
+              ? "Online"
+              : "Offline"}
+          </Status>
         </Box>
         <RightComponent>
           <Search />
